@@ -58,8 +58,39 @@ def irma():
         # look into Python's built-in next function
         #(https://docs.python.org/3/library/functions.html#next)
         # pointreader is an iterator
-
+        next(pointreader)
         for row in pointreader:
+            t.setpos(float(row[3]),float(row[2]))
+            #blue category
+            if int(row [4]) >=74 and int(row [4]) <= 95:
+                t.pencolor("blue")
+                t.width(1)
+            #green category
+            elif int(row [4]) >=96 and int(row[4]) <=110:
+                t.pencolor("green")
+                t.width(2)
+            #yellow category
+            elif int(row [4]) >= 111 and int(row[4]) <=129:
+                t.pencolor("yellow")
+                t.width(4)
+            #orange category
+            elif int(row [4]) >=130 and  int(row[4]) <156:
+                t.pencolor("orange")
+                t.width(6)
+            #red category
+            elif int(row [4]) >= 157: 
+                t.pencolor("red")
+                t.width(8)
+            #white category
+            else:
+                t.pencolor("white")
+                t.width(.5)
+
+
+
+
+
+
             # row is a list representing each line in the csv file
             # Each comma separated element is in its own index position
             # This code just prints out the date and time elements of each
@@ -80,3 +111,4 @@ def irma():
 
 if __name__ == "__main__":
     bg=irma()
+turtle.done()
